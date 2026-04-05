@@ -48,6 +48,7 @@ jobs:
           echo "apk_count=$existing" >> $GITHUB_OUTPUT
 
       - name: Package Asustor App
+        if: steps.check_assets.outputs.apk_count == '0'
         id: package_asustor_app
         uses: asustor-contrib/ga-package-asustor-app@v2
         with:
@@ -55,12 +56,14 @@ jobs:
           out-dir: 'dist'
 
       - name: Upload Package artifact
+        if: steps.check_assets.outputs.apk_count == '0'
         uses: actions/upload-artifact@v4
         with:
           name: Libre-speedtest-${{ steps.get_latest_tag.outputs.new_tag }}
           path: dist/*.apk
 
       - name: Release
+        if: steps.check_assets.outputs.apk_count == '0'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.get_latest_tag.outputs.new_tag }}
