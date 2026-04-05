@@ -2,7 +2,7 @@
   "general": {
     "package": "LibreSpeedtest",
     "name": "LibreSpeed Speedtest",
-    "version": "5.5.0",
+    "version": "5.5.0.r01",
     "developer": "librespeed",
     "maintainer": "007revad",
     "email": "007daver@gmail.com",
